@@ -1,6 +1,7 @@
 angular.module('dbt')
 .factory('ContactService', function() {
-	
+
+	//would get data from the phone
 	var data = [{
 		id: 1,
 		name: 'Michael'
@@ -9,13 +10,19 @@ angular.module('dbt')
 		id: 2,
 		name: 'Jaymesh'
 	}];
-	
+
+
+
 	var service = {
+		//contact passes through the ID
 		contact : Contact,
+		//contacts returns every contact
 		contacts : Contacts
 	}
-	
+
 	return service;
+
+
 
 	function Contact(id) {
 		var contactResult
@@ -27,7 +34,7 @@ angular.module('dbt')
 		});
 		return contactResult;
 	}
-	
+
 	function Contacts() {
 		return data;
 	}
