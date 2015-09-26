@@ -26,7 +26,7 @@ angular.module('dbt', ['ionic'])
   })
   
   $stateProvider.state('communications', {
-    url: '/communications',
+    url: '/communications/:id',
     templateUrl: '/templates/communicationList.html'
   })
 });
