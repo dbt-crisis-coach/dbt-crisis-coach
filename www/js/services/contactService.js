@@ -4,19 +4,31 @@ angular.module('dbt')
 	var data = [{
 		id: 1,
 		name: 'Michael'
+	},
+	{
+		id: 2,
+		name: 'Jaymesh'
 	}];
 	
 	var service = {
-		getContact : getContact
+		contact : Contact,
+		contacts : Contacts
 	}
 	
 	return service;
-	
-	function getContact(id) {
+
+	function Contact(id) {
+		var contactResult
 		data.forEach(function(contact) {
 			if(contact.id == id) {
-				return contact;
+				contactResult = contact;
+				return;
 			}
 		});
+		return contactResult;
+	}
+	
+	function Contacts() {
+		return data;
 	}
 });
