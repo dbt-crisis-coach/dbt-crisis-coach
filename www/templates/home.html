@@ -1,4 +1,7 @@
 <ion-view title="Contacts">
+  <ion-nav-buttons side="right">
+    <a class="button" ng-href="#/communications/1">Add Contact</a>
+  </ion-nav-buttons>
   <div class="ion-view">
     <ion-content padding="true" ng-controller="ContactCtr as contactCtr">
       <div class="list" ng-repeat="contact in contactCtr.contacts" >

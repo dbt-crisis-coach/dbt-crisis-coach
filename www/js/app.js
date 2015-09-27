@@ -29,4 +29,9 @@ angular.module('dbt', ['ionic'])
     url: '/communications/:id',
     templateUrl: '/templates/communicationList.html'
   })
+  
+    $stateProvider.state('addContact', {
+    url: '/addContact',
+    templateUrl: '/templates/addContact.html'
+  })
 });
