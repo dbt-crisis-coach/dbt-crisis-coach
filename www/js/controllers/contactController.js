@@ -6,9 +6,12 @@ angular.module('dbt')
 		this.chooseContact = chooseContact;
 		
 		function chooseContact() {
-			$cordovaContacts.pickContact().then(function (contactPicked) {
-			ContactService.addContact(contactPicked);
-		});
+			$ionicPlatform.ready(function() {
+					$cordovaContacts.pickContact().then(function (contactPicked) {
+					ContactService.addContact(contactPicked);
+				});
+			})
+			
 		}
 		
 });
