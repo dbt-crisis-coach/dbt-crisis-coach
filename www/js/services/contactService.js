@@ -1,5 +1,5 @@
 angular.module('dbt')
-.factory('ContactService', function() {
+.factory('ContactService', function($ionicPlatform, $cordovaContacts) {
 
 	//would get data from the phone
 	var data = [];
@@ -12,7 +12,9 @@ angular.module('dbt')
 		//contacts returns every contact
 		contacts : Contacts,
 		//adds choosen contact to data
-		addContact : addContact
+		addContact : addContact,
+		
+		importContact: importContact
 		
 	}
 
@@ -37,5 +39,13 @@ angular.module('dbt')
 	
 	function addContact(contact) {
 		data.push(contact);
+	}
+	
+	function importContact() {
+		$ionicPlatform.ready(function() {
+				$cordovaContacts.pickContact().then(function (contactPicked) {
+				addContact(contactPicked);
+			});
+		})
 	}
 });
