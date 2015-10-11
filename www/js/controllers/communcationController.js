@@ -3,6 +3,6 @@ angular.module('dbt')
 	
 	var contact = ContactService.contact($stateParams.id);
 	
-	this.title = contact.name;
+	this.title = contact.displayName;
 	
 });

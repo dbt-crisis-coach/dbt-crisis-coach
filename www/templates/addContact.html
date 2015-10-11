@@ -1,0 +1,14 @@
+<ion-view title="Add Contact">
+	<ion-content padding = "true" ng-controller="AddContactCtr as addContactCtr">
+		<div class="list">
+			<label class="item item-input">
+				<input type="text" placeholder="Name" ng-model="contact.displayName">
+			</label>
+			<label class="item item-input">
+				<input type="tel" placeholder="Number" ng-model="contact.phoneNumber">
+			</label>
+		</div>
+		<button class="button button-full button-positive" ng-click="addContactCtr.import()">Import From Contacts</button>
+		<button class="button button-full button-balanced" ng-click="addContactCtr.addContact(contact)">Add Contact</button>
+	</ion-content>
+</ion-view>
