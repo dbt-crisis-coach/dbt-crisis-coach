@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>dbt</title>
 
 
     <!-- compiled css output -->
@@ -20,15 +20,20 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <!-- gets the contact data, id and username-->
     <script src="js/controllers/contactController.js"></script>
     <script src="js/controllers/communcationController.js"></script>
     <script src="js/controllers/addContactController.js"></script>
     <script src="js/services/contactService.js"></script>
     
   </head>
+  <!--creates an angular module named dbt -->
   <body ng-app="dbt">
+    <!--location navigation bar, as compiled in ionic -->
     <ion-nav-bar>
+      <!-- button-clear denotes it's css class type defined in ionic -->
       <ion-nav-back-button class="button-clear">
+        <!-- ion-arrow-left-c denotes an ionic defined button type -->
         <i class="ion-arrow-left-c"></i> Back
       </ion-nav-back-button>
     </ion-nav-bar>

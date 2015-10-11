@@ -17,6 +17,7 @@ angular.module('dbt')
 	}
 	return service;
 
+
 	function Contact(id) {
 		var contactResult
 		data.forEach(function(contact) {
