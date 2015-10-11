@@ -1,5 +1,5 @@
 angular.module('dbt')
-.controller('ContactCtr', function($ionicPlatform, $cordovaContacts, ContactService) {
+.controller('ContactCtr', function(ContactService) {
 	
 	this.contacts = ContactService.contacts();	
 		
