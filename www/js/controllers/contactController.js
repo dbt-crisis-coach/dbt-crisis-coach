@@ -1,7 +1,12 @@
 angular.module('dbt')
 .controller('ContactCtr', function(ContactService) {
+	self = this;
 	
-	this.contacts = ContactService.contacts();	
-		
+	ContactService.contacts().then( function(contacts) {
+		self.contacts = contacts;
+	}).catch(function(error) {
+		alert('Woops. Looks like we cannot find your contact because of a storage issue');
+	});
+	
 });
 		
