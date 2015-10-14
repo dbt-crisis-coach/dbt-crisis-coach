@@ -8,7 +8,7 @@ angular.module('dbt')
 		ContactService.importContact().then(function() {
 			$state.go('home');
 		}).catch(function(error) {
-			console.log(error);
+			console.log(error.message);
 			alert('Woops. It looks like the contact import failed. Try adding a contact manually');
 		});
 	}
@@ -26,7 +26,7 @@ angular.module('dbt')
 		ContactService.addContact(newContact).then(function() {
 			$state.go('home');
 		}).catch(function(error) {	
-			console.log(error);
+			console.log(error.message);
 			alert('Woops. It looks like adding a contact because of a storage issue.');
 		});
 	}

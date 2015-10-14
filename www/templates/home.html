@@ -5,10 +5,10 @@
   <div class="ion-view">
     <ion-content padding="true" >
       <div class="list" ng-repeat="contact in contactCtr.contacts" >
-            <a ng-href="#/communications/{{ contact.id }}" class="item item-avatar">
+            <a ng-href="#/profile/{{ contact.contactId }}" class="item item-avatar">
               <img src="" alt="">
-              <h2>{{ contact.displayName }}</h2>
-              <p>This will be the first text message</p>
+              <h2>{{ contact.name }}</h2>
+              <!--<p>This will be the first text message</p>-->
             </a>
           </div>
     </ion-content>

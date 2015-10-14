@@ -1,56 +1,63 @@
-angular.module('dbt')
-.factory('ContactService', function($ionicPlatform, $cordovaContacts, $q) {
+angular.module('dbt-contact')
+.factory('ContactService', function($ionicPlatform, $cordovaContacts, $q, $cordovaSQLite) {
 
-	//would get data from the phone
-	var data = []
+  var service = {
+	contact : Contact,
+	contacts : Contacts,
+	addContact : InsertContact,
+	importContact: ImportContact
 
-	var service = {
-		//contact passes through the ID
-		contact : Contact,
-		//contacts returns every contact
-		contacts : Contacts,
-		//adds choosen contact to data
-		addContact : addContact,
-		//import contact from phone contacts
-		importContact: importContact
-		
-	}
-	return service;
+  }
+  return service;
 
+  function Contact(id) {
+	var query = "SELECT * FROM Contacts WHERE contactId = ?";
+	return $cordovaSQLite.execute(db, query, [id]).then(function(result) {
+	  return(result.rows.item(0));
+	});
+  }
 
-	function Contact(id) {
-		var contactResult
-		data.forEach(function(contact) {
-			if(contact.id == id) {
-				contactResult = contact;
-				return;
-			}
-		});
-		return contactResult;
-	}
-
-	function Contacts() {
-		return data;
-	}
-	
-	function addContact(contact) {
-		return $q(promise); 
-		
-		function promise(resolve, reject) {
-			try {
-				data.push(contact);	
-				resolve(contact.id);						
-			} catch(error) {
-				reject(error);
-			}
+  function Contacts() {
+	return $ionicPlatform.ready().then(function() {
+	  var query = "SELECT * FROM Contacts";
+	  return $cordovaSQLite.execute(db, query, []);
+	})
+	.then(function(result) {
+		var contacts = [];
+		for(var i = 0; i < result.rows.length; i++) {
+		  contacts.push(result.rows.item(i));
 		}
-	}
-	
-	function importContact() {
-		return $ionicPlatform.ready().then(function() {
-			return $cordovaContacts.pickContact().then(function (contactPicked) {
-				return addContact(contactPicked);
-			});
-		});
-	}
+		return contacts;
+	  });
+  }
+
+  function ImportContact() {
+	return $ionicPlatform.ready()
+	  .then(function() {
+		return $cordovaContacts.pickContact();
+	  })
+	  .then(function (contactPicked) {
+		return InsertContact(contactPicked);
+	  })
+  }
+
+  function InsertContact(contact) {
+
+	var query = "INSERT INTO Contacts (name, importId) VALUES (?,?)";
+
+	return $cordovaSQLite.execute(db, query, [contact.displayName, contact.id]).then(function(res) {
+	  return InsertNumbers(res.insertId, contact.phoneNumbers);
+	});
+
+  }
+
+  function InsertNumbers(contactId, phoneNumbers) {
+	var insertNumberWorkers = [];
+	phoneNumbers.forEach(function(element) {
+	  var query = "INSERT INTO Numbers (contactId, type, number, pref) VALUES (?,?,?,?)";
+	  insertNumberWorkers.push($cordovaSQLite.execute(db, query, [contactId, element.type, element.value, element.pref]));
+	});
+
+	return $q.all(insertNumberWorkers);
+  }
 });
