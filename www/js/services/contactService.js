@@ -39,11 +39,13 @@ angular.module('dbt-contact')
   }
 
   function importContact() {
-	return $ionicPlatform.ready().then(function() {
-	  return $cordovaContacts.pickContact().then(function (contactPicked) {
+	return $ionicPlatform.ready()
+	  .then(function() {
+		return $cordovaContacts.pickContact()
+	  })
+	  .then(function (contactPicked) {
 		return insertContact(contactPicked);
-	  });
-	});
+	  })
   }
 
   function insertContact(contact) {
