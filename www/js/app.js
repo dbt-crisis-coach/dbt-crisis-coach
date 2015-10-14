@@ -6,7 +6,7 @@
 
 var db = null;
 
-angular.module('dbt', ['ionic', 'ngCordova'])
+angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
 
 .run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {

@@ -1,4 +1,4 @@
-angular.module('dbt')
+angular.module('dbt-contact', [])
 .controller('ContactCtr', function(ContactService) {
 	self = this;
 	
