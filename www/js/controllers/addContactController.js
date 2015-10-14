@@ -1,5 +1,5 @@
-angular.module('dbt')
-.controller('AddContactCtr', function($cordovaContacts, ContactService, $state) {
+angular.module('dbt-contact')
+.controller('AddContactCtr', function(ContactService, $state) {
 	
 	this.import = importContact;
 	this.addContact = addContact;
