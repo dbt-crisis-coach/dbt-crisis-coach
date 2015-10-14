@@ -27,8 +27,8 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     db = $cordovaSQLite.openDB('dbt.db');    
     // $cordovaSQLite.execute(db, "DROP TABLE IF EXISTS Numbers;");	
     // $cordovaSQLite.execute(db, "DROP TABLE IF EXISTS Contacts;");
-    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Contacts (ContactId integer primary key, Name text, ImportId integer)");
-    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Numbers (NumberId integer primary key, ContactId integer, Type text, Number text, Pref bool, FOREIGN KEY(ContactId) REFERENCES Contacts(ContactId))");	
+    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Contacts (contactId integer primary key, name text, importId integer)");
+    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Numbers (numberId integer primary key, contactId integer, type text, number text, pref bool, FOREIGN KEY(contactId) REFERENCES Contacts(contactId))");	
   }
 })
 .config(function($stateProvider, $urlRouterProvider) {
@@ -41,7 +41,7 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
   })
   
   $stateProvider.state('communications', {
-    url: '/communications/:ContactId',
+    url: '/communications/:contactId',
     templateUrl: 'templates/communicationList.html'
   })
   
@@ -51,7 +51,7 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
   })
   
   $stateProvider.state('profile', {
-    url: '/profile/:ContactId',
+    url: '/profile/:contactId',
     templateUrl: 'templates/profile.html'
   })
 });
