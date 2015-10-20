@@ -56,7 +56,6 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     views : {
       'profile-communications': {
         templateUrl: 'templates/communicationList.html',
-        controller: 'CommunicationCtr as communicationCtr'
       }
     }
   })

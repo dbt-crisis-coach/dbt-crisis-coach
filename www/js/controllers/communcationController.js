@@ -1,8 +1,8 @@
 angular.module('dbt')
-.controller('CommunicationCtr',function($stateParams, ContactService) {
+.controller('CommunicationCtr',function($stateParams, ContactService, $scope) {	
+	var self = this;
 	
-	var contact = ContactService.contact($stateParams.contactId);
-	
-	this.title = contact.displayName;
-	
+	ContactService.contact($stateParams.contactId).then(function(contact) {
+					self.title = contact.name;
+				});
 });
