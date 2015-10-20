@@ -1,11 +1,11 @@
-<ion-view ng-controller="ProfileCtr as profileCtr">
-	<ion-nav-title>
-		{{profileCtr.name}}
-	</ion-nav-title>
-	<ion-content padding="true" >
-		<!--<div class="tabs">
-			<a href="" class="tab-item">Information</a>
-			<a href="" class="tab-item">Communications</a>
-		</div>-->
-	</ion-content>
-</ion-view>
+<ion-tabs class="tabs-icon-top tabs-default">
+	<ion-tab title="Communications" ui-sref="profile.communications" icon-on="ion-ios-telephone" icon-off="ion-ios-telephone-outline">
+		Communications
+		<ion-nav-view name="profile-communications">
+		</ion-nav-view>
+	</ion-tab>
+	<ion-tab title="Information" ui-sref="profile.information" icon-on="ion-ios-information" icon-off="ion-ios-information-outline">
+		<ion-nav-view name="profile-information">
+		</ion-nav-view>
+	</ion-tab>
+</ion-tabs>

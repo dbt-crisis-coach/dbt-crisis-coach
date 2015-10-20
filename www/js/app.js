@@ -40,18 +40,23 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     templateUrl: 'templates/home.html'
   })
   
-  $stateProvider.state('communications', {
-    url: '/communications/:contactId',
-    templateUrl: 'templates/communicationList.html'
-  })
-  
     $stateProvider.state('addContact', {
     url: '/addContact',
     templateUrl: 'templates/addContact.html'
   })
   
   $stateProvider.state('profile', {
-    url: '/profile/:contactId',
+    url: '/profile',
+    abstract: true,
     templateUrl: 'templates/profile.html'
+  })
+  
+    $stateProvider.state('profile.communications', {
+    url: '/communications',
+    views : {
+      'profile-communications': {
+        templateUrl: 'templates/communicationList.html'
+      }
+    }
   })
 });
