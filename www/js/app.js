@@ -52,10 +52,11 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
   })
   
     $stateProvider.state('profile.communications', {
-    url: '/communications',
+    url: '/communications/:contactId',
     views : {
       'profile-communications': {
-        templateUrl: 'templates/communicationList.html'
+        templateUrl: 'templates/communicationList.html',
+        controller: 'CommunicationCtr as communicationCtr'
       }
     }
   })
