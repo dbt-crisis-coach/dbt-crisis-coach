@@ -1,4 +1,7 @@
 <ion-view ng-controller="CommunicationCtr as communicationCtr">
+	<ion-nav-buttons side="left">
+        <button class="button-clear" ng-click="communicationCtr.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+    </ion-nav-buttons>
 	<ion-nav-title>{{ communicationCtr.title }}</ion-nav-title>
 	<ion-content padding="true">
 		<div class="list">
