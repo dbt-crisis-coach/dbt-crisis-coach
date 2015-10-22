@@ -51,11 +51,21 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     templateUrl: 'templates/profile.html'
   })
   
+  $stateProvider.state('profile.information', {
+    url: '/information/:contactId',
+    views : {
+      'profile-information': {
+        templateUrl: 'templates/information.html'
+      }
+    }
+  })
+  
     $stateProvider.state('profile.communications', {
     url: '/communications/:contactId',
+    cache: false,
     views : {
       'profile-communications': {
-        templateUrl: 'templates/communicationList.html',
+        templateUrl: 'templates/communicationList.html'
       }
     }
   })

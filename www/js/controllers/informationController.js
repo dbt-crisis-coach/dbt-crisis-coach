@@ -1,5 +1,5 @@
 angular.module('dbt')
-.controller('CommunicationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher) {	
+.controller('InformationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher) {	
 	var self = this;
 	
 	self.goBack  = goBack;
@@ -10,11 +10,10 @@ angular.module('dbt')
 	.catch(function(error) {
 		console.log(error.message);
 		alert('Cannot find that contact');
-	});;
+	});
 				
 	function goBack() {
 		$ionicViewSwitcher.nextDirection('back');
 		$state.go('home');
-
 	}
 });

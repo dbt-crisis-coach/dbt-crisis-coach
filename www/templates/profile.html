@@ -1,10 +1,12 @@
-<ion-tabs class="tabs-icon-top tabs-positive">
-	<ion-tab title="Communications" ui-sref="profile.communications" icon-on="ion-ios-telephone" icon-off="ion-ios-telephone-outline">
-		<ion-nav-view name="profile-communications">
-		</ion-nav-view>
-	</ion-tab>
-	<ion-tab title="Information" ui-sref="profile.information" icon-on="ion-ios-information" icon-off="ion-ios-information-outline">
-		<ion-nav-view name="profile-information">
-		</ion-nav-view>
-	</ion-tab>
-</ion-tabs>
+<div ng-controller="ProfileCtr as profileCtr">
+	<ion-tabs class="tabs-icon-top tabs-positive">
+		<ion-tab title="Information" ui-sref="profile.information({contactId: profileCtr.contactId})" icon-on="ion-ios-information" icon-off="ion-ios-information-outline">
+			<ion-nav-view name="profile-information">
+			</ion-nav-view>
+		</ion-tab>
+		<ion-tab title="Communications" ui-sref="profile.communications({contactId: profileCtr.contactId})" icon-on="ion-ios-telephone" icon-off="ion-ios-telephone-outline">
+			<ion-nav-view name="profile-communications">
+			</ion-nav-view>
+		</ion-tab>
+	</ion-tabs>
+</div>

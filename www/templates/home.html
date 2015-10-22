@@ -5,7 +5,7 @@
   <div class="ion-view">
     <ion-content padding="true" >
       <div class="list" ng-repeat="contact in contactCtr.contacts" >
-            <a ng-href="#/profile/communications/{{ contact.contactId }}" class="item item-avatar">
+            <a ui-sref="profile.information({ contactId: contact.contactId })" nav-direction="forward" class="item item-avatar">
               <img src="" alt="">
               <h2>{{ contact.name }}</h2>
               <!--<p>This will be the first text message</p>-->
