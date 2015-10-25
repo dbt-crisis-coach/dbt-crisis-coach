@@ -29,7 +29,8 @@
     {
       "locator": "https://github.com/litehelpers/Cordova-sqlite-storage.git",
       "id": "cordova-sqlite-storage"
-    }
+    },
+    "com.rjfun.cordova.sms"
   ],
   "cordovaPlatforms": [
     "android"
