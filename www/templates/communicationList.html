@@ -1,18 +1,20 @@
 <ion-view ng-controller="CommunicationCtr as communicationCtr">
+	<ion-nav-title >{{ communicationCtr.title }}</ion-nav-title>	
 	<ion-nav-buttons side="left">
         <button class="button-clear" ng-click="communicationCtr.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
     </ion-nav-buttons>
 	<ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-document-text" ng-click="communicationCtr.toggleSummary()"></button>
+        <button ng-if = "communicationCtr.edit == false" class="button button-icon icon ion-document-text" ng-click="communicationCtr.toggleSummary()"></button>
+        <button ng-if = "communicationCtr.edit" class="button button-icon icon ion-close" ng-click="communicationCtr.toggleSummary()"></button>
+        <button ng-if = "communicationCtr.edit" class="button button-icon icon ion-checkmark" ng-click="communicationCtr.finishSummary()"></button>
     </ion-nav-buttons>
-	<ion-nav-title>{{ communicationCtr.contact.name }}</ion-nav-title>
 	<ion-content>
 		<ion-list>
 			<ion-item ng-repeat="text in communicationCtr.texts" class="item-avatar item-checkbox">
 				<!--Test Image-->
 				<img ng-if="communicationCtr.edit == false" ng-src="../img/ionic.png">
 				<label ng-if="communicationCtr.edit == true" class="checkbox">
-					<input type="checkbox">
+					<input type="checkbox" ng-model="text.checked" ng-checked="text.checked">
 				</label>
 				<h2 ng-if="text.type == 1">{{ communicationCtr.contact.name }}</h2>
 				<h2 ng-if="text.type == 2">You</h2>
