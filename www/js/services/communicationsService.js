@@ -10,7 +10,8 @@ angular.module('dbt')
 		
 		var filter = {
                 box : '',
-                address : contactNumber.replace(/[^\d\+]/g,"")
+                address : contactNumber.replace(/[^\d\+]/g,""),
+				maxCount : 50
             }
 			
 		return $ionicPlatform.ready().then(function() {

@@ -2,8 +2,12 @@ angular.module('dbt')
 .controller('CommunicationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher, CommunicationsService) {	
 	var self = this;
 	
-	self.goBack  = goBack;
 	self.texts = [];
+	self.edit = false;
+	
+	self.goBack  = goBack;
+	self.toggleSummary = toggleSummary;	
+	
 	
 	ContactService.contact($stateParams.contactId).then(function(contact) {
 		self.contact = contact;
@@ -21,5 +25,14 @@ angular.module('dbt')
 	function goBack() {
 		$ionicViewSwitcher.nextDirection('back');
 		$state.go('home');
+	}
+	
+	function toggleSummary() {
+		if(self.edit) {
+			self.edit = false
+		}
+		else {
+			self.edit = true;
+		}
 	}
 });
