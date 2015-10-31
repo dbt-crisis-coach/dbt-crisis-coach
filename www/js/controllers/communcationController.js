@@ -6,7 +6,7 @@ angular.module('dbt')
 	self.texts = [];
 	
 	ContactService.contact($stateParams.contactId).then(function(contact) {
-		self.title = contact.name;
+		self.contact = contact;
 		return CommunicationsService.readTexts(contact.number);
 	})
 	.then(function(texts) {
@@ -21,6 +21,5 @@ angular.module('dbt')
 	function goBack() {
 		$ionicViewSwitcher.nextDirection('back');
 		$state.go('home');
-
 	}
 });

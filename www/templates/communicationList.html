@@ -2,13 +2,14 @@
 	<ion-nav-buttons side="left">
         <button class="button-clear" ng-click="communicationCtr.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
     </ion-nav-buttons>
-	<ion-nav-title>{{ communicationCtr.title }}</ion-nav-title>
-	<ion-content padding="true">
-		<div class="list">
-			<a href="" class="item item-avatar">
-				<h2>Text Message</h2>
-				<p>This is a text message</p>
-			</a>
-		</div>
+	<ion-nav-title>{{ communicationCtr.contact.name }}</ion-nav-title>
+	<ion-content>
+		<ion-list>
+			<ion-item ng-repeat="text in communicationCtr.texts">
+				<h2 ng-if="text.type == 1">{{ communicationCtr.contact.name }}</h2>
+				<h2 ng-if="text.type == 2">You</h2>
+				<p>{{ text.body }}</p>
+			</ion-item>
+		</ion-list>
 	</ion-content>
 </ion-view>
