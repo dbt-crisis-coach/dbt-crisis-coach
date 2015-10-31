@@ -11,7 +11,7 @@ angular.module('dbt-contact')
   return service;
 
   function Contact(id) {
-	var query = "SELECT * FROM Contacts WHERE contactId = ?";
+	var query = "SELECT * FROM Contacts C JOIN Numbers AS N ON C.contactId= N.contactId WHERE C.contactId = ?";
 	return $cordovaSQLite.execute(db, query, [id]).then(function(result) {
 	  return(result.rows.item(0));
 	});
