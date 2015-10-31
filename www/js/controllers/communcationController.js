@@ -1,5 +1,5 @@
 angular.module('dbt')
-.controller('CommunicationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher, CommunicationsService) {	
+.controller('CommunicationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher, CommunicationsService, CSVService) {	
 	var self = this;
 	
 	self.texts = [];
@@ -7,6 +7,7 @@ angular.module('dbt')
 	
 	self.goBack  = goBack;
 	self.toggleSummary = toggleSummary;	
+	self.finishSummary = finishSummary;
 	
 	
 	ContactService.contact($stateParams.contactId).then(function(contact) {
@@ -40,5 +41,9 @@ angular.module('dbt')
 			self.edit = true;
 			self.title = 'SMS to summarise';			
 		}
+	}
+	
+	function finishSummary() {
+		var csv = CSVService.convertToCSV(self.texts);
 	}
 });
