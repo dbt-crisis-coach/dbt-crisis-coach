@@ -31,7 +31,11 @@
       "id": "cordova-sqlite-storage"
     },
     "com.rjfun.cordova.sms",
-    "org.apache.cordova.file"
+    "org.apache.cordova.file",
+    {
+      "locator": "https://github.com/katzer/cordova-plugin-email-composer.git",
+      "id": "de.appplant.cordova.plugin.email-composer"
+    }
   ],
   "cordovaPlatforms": [
     "android"
