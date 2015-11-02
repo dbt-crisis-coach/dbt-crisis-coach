@@ -1,5 +1,5 @@
 angular.module('dbt')
-.controller('CommunicationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher, CommunicationsService, CSVService) {	
+.controller('CommunicationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher, CommunicationsService, CSVService, FileService) {	
 	var self = this;
 	
 	self.texts = [];
@@ -45,5 +45,6 @@ angular.module('dbt')
 	
 	function finishSummary() {
 		var csv = CSVService.convertToCSV(self.texts);
+		FileService.save('report.csv', csv).then();
 	}
 });

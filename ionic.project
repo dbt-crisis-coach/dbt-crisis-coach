@@ -1,6 +1,6 @@
 {
   "name": "dbt-crisis-coach",
-  "app_id": "",
+  "app_id": "com.dbt-crisis.coach",
   "gulpStartupTasks": [
     "sass",
     "watch"
