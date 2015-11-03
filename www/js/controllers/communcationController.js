@@ -31,16 +31,20 @@ angular.module('dbt')
 	
 	function toggleSummary() {
 		if(self.edit) {
-			self.edit = false;
-			self.title = self.contact.name;
-			self.texts.forEach(function(element) {
-				element.checked = false;
-			});
+			summaryComplete();
 		}
 		else {
 			self.edit = true;
 			self.title = 'SMS to summarise';			
 		}
+	}
+	
+	function summaryComplete() {
+		self.edit = false;
+		self.title = self.contact.name;
+		self.texts.forEach(function(element) {
+			element.checked = false;
+		});
 	}
 	
 	function finishSummary() {
@@ -49,7 +53,7 @@ angular.module('dbt')
 			return EmailService.emailFile(result.fullPath);
 		})
 		.then(function() {
-			alert('success');
+			summaryComplete();
 		})
 		.finally(function() {
 			//Delete
