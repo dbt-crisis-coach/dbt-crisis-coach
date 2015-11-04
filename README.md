@@ -7,6 +7,7 @@ DBT Crisis Coach is a mobile app to assist mental health professionals deliver s
 
 ##Install
 ```
+npm install -g cordova ionic
 npm install
 ionic state restore
 ```
