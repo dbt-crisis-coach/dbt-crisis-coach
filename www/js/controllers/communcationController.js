@@ -50,10 +50,13 @@ angular.module('dbt')
 	function finishSummary() {
 		var csv = CSVService.convertToCSV(self.texts);
 		FileService.save('report.csv', csv).then(function(result) {
-			return EmailService.emailFile(result.fullPath);
+			return EmailService.emailFile(result.nativeURL);
 		})
 		.then(function() {
 			summaryComplete();
+		})
+		.catch(function(error) {
+			console.log(error);
 		})
 		.finally(function() {
 			//Delete

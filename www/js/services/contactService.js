@@ -55,7 +55,7 @@ angular.module('dbt-contact')
 	var insertNumberWorkers = [];
 	phoneNumbers.forEach(function(element) {
 	  var query = "INSERT INTO Numbers (contactId, type, number, pref) VALUES (?,?,?,?)";
-	  insertNumberWorkers.push($cordovaSQLite.execute(db, query, [contactId, element.type, element.value, element.pref]));
+	  insertNumberWorkers.push($cordovaSQLite.execute(db, query, [contactId, element.type, element.value.replace(/[^\d\+]/g,""), element.pref]));
 	});
 
 	return $q.all(insertNumberWorkers);

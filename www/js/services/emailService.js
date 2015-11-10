@@ -9,10 +9,10 @@ angular.module('dbt')
 	
 	function emailFile(fileName) {
 		return $ionicPlatform.ready().then(function() {
-			var email = {
-				attachments : ['file:' + fileName]
-			}
-			return $cordovaEmailComposer.open(email);
+			console.log(fileName);
+			return $cordovaEmailComposer.open({
+				attachments : [fileName]
+			});
 		});
 	}
 });

@@ -13,12 +13,12 @@ angular.module('dbt')
 		
 		return $ionicPlatform.ready().then(function() {
 			//Creates file in cache and replaces if filename already exists
-			return $cordovaFile.createFile(cordova.file.cacheDirectory, filename, data, true);
+			return $cordovaFile.createFile(cordova.file.externalCacheDirectory, filename, data, true);
 		});
 		
 	}
 	
 	function remove(fileName) {
-		return $cordovaFile.removeFile(cordova.file.cacheDirectory, fileName);
+		return $cordovaFile.removeFile(cordova.file.externalCacheDirectory, fileName);
 	}
 });
