@@ -1,25 +1,33 @@
-<ion-view ng-controller="InformationCtr as informationCtr">
+<ion-view ng-controller="InformationCtr as info">
 	<ion-nav-buttons side="left">
-        <button class="button-clear" ng-click="informationCtr.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+        <button class="button-clear" ng-click="info.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
     </ion-nav-buttons>
-	<ion-nav-title>{{ informationCtr.title }}</ion-nav-title>
+	<ion-nav-title>{{ info.title }}</ion-nav-title>
 	<ion-content padding="true">
 		<h1>Profile</h1>
-		<div class="list card">
+		<div class="list">
 			<!-- Client Description Will go here -->
-			<p><strong>
-				Preferred Skill:</strong>
+			<p class="item"><strong>Preferred Skill:</strong>
+				{{ info.details.pref }} 
 			</p>				
-			<p><strong>Triggers:</strong>
+			<div class="item"><strong>Triggers:</strong> 
+				<ul class="bullet-list">
+			        <li ng-repeat="trigger in info.details.triggers">
+			        	<p>{{ trigger }}</p>
+			        </li>
+			    </ul>
+			
+			</div>
+			<p class="item"><strong>More:</strong>
+			 {{ info.details.extra }} 
 			</p>
-			<p><strong>More:</strong>
 		</div>
 		<div class="list card">
 		    <div class="item item-icon-right">
 		    	<h2>Mobile</h2>
-	  			<p><!-- {{ informationCtr.mobileNumber }} --></p>
+	  			<p>{{ info.number }}</p>
 		      <div class="icon">
-			      <i class="ion-ios-chatboxes"></i>
+			      <i class="ion-ios-chatboxes margin-5"></i>
 			       <i class="ion-ios-telephone"></i>
 			   </div>
 		    </div>
@@ -31,7 +39,7 @@
 	  	<ul class="list">
 		  <li class="item item-toggle">
 		     Automatically Import Texts
-		     <label class="toggle toggle-assertive">
+		     <label class="toggle toggle-balanced">
 		       <input type="checkbox">
 		       <div class="track">
 		         <div class="handle"></div>
@@ -40,7 +48,7 @@
 		  </li>
 		  <li class="item item-toggle">
 		     Automatically Import Calls
-		     <label class="toggle toggle-assertive">
+		     <label class="toggle toggle-balanced">
 		       <input type="checkbox">
 		       <div class="track">
 		         <div class="handle"></div>

@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+ul.bullet-list {
+	list-style-type: circle;
+}
+
+.margin-5 {
+	margin: 5px;
+}
