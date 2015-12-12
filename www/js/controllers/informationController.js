@@ -18,7 +18,18 @@ angular.module('dbt')
 		console.log(error.message);
 		alert('Cannot find that contact');
 	});
-				
+	
+	function finishEdit() {
+		
+	}
+
+	function edit() {
+
+	}
+
+
+
+
 	function goBack() {
 		$ionicViewSwitcher.nextDirection('back');
 		$state.go('home');

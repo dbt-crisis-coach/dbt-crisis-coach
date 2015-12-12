@@ -1,31 +1,35 @@
-<ion-view ng-controller="InformationCtr as info">
+<ion-view ng-controller="InformationCtr as informationCtrl">
+	<ion-nav-title>{{ informationCtrl.title }}</ion-nav-title>
 	<ion-nav-buttons side="left">
-        <button class="button-clear" ng-click="info.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+        <button class="button-clear" ng-click="informationCtrl.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
     </ion-nav-buttons>
-	<ion-nav-title>{{ info.title }}</ion-nav-title>
+    <ion-nav-buttons side="right">
+    	<button ng-if="informationCtrl.edit == false" class="button-icon icon ion-edit" ng-click="informationCtrl.edit()">
+    	 <button ng-if = "informationCtrl.editing == !false" class="button button-icon icon ion-checkmark" ng-click="informationCtr.finishEdit()">
+	</ion-nav-buttons>
 	<ion-content padding="true">
 		<h1>Profile</h1>
 		<div class="list">
 			<!-- Client Description Will go here -->
 			<p class="item"><strong>Preferred Skill:</strong>
-				{{ info.details.pref }} 
+				{{ informationCtrl.details.pref }} 
 			</p>				
 			<div class="item"><strong>Triggers:</strong> 
 				<ul class="bullet-list">
-			        <li ng-repeat="trigger in info.details.triggers">
+			        <li ng-repeat="trigger in informationCtrl.details.triggers">
 			        	<p>{{ trigger }}</p>
 			        </li>
 			    </ul>
 			
 			</div>
 			<p class="item"><strong>More:</strong>
-			 {{ info.details.extra }} 
+			 {{ informationCtrl.details.extra }} 
 			</p>
 		</div>
 		<div class="list card">
 		    <div class="item item-icon-right">
 		    	<h2>Mobile</h2>
-	  			<p>{{ info.number }}</p>
+	  			<p>{{ informationCtrl.number }}</p>
 		      <div class="icon">
 			      <i class="ion-ios-chatboxes" style="margin-right: 10px"></i>
 			       <i class="ion-ios-telephone"></i>
