@@ -24,6 +24,8 @@ angular.module('dbt')
 	}
 
 	function edit() {
+		$ionicViewSwitcher.nextDirection('forward');
+		$state.go('profile.information.edit');
 
 	}
 
