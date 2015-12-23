@@ -3,8 +3,10 @@ angular.module('dbt')
 	var self = this;
 	
 	self.goBack  = goBack;
+	self.edit = edit;
 	
 	ContactService.contact($stateParams.contactId).then(function(contact) {
+		self.contact = contact;
 		self.title = contact.name;
 		self.number = contact.number;
 		// Mock Details
@@ -24,9 +26,7 @@ angular.module('dbt')
 	}
 
 	function edit() {
-		$ionicViewSwitcher.nextDirection('forward');
-		$state.go('profile.information.edit');
-
+		$state.go('profile.edit');
 	}
 
 
