@@ -4,8 +4,7 @@
         <button class="button-clear" ng-click="informationCtrl.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    	<button ng-if="informationCtrl.edit == false" class="button-icon icon ion-edit" ng-click="informationCtrl.edit()">
-    	 <button ng-if = "informationCtrl.editing == !false" class="button button-icon icon ion-checkmark" ng-click="informationCtr.finishEdit()">
+    	 <button class="button button-icon icon ion-checkmark" ng-click="informationCtr.finishEdit()">
 	</ion-nav-buttons>
 	<ion-content padding="true">
 		<h1>Profile</h1>
@@ -21,7 +20,7 @@
 			        </li>
 			    </ul>
 				<i class="ion-plus-circled"></i>
-				<button class="button icon-left ion-">Add New Trigger</button>
+				<button class="button icon-left ion-add">Add New Trigger</button>
 			</div>
 			<p class="item"><strong>More:</strong>
 			 {{ informationCtrl.details.extra }} 

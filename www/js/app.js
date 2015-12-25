@@ -64,14 +64,14 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
 
   $stateProvider.state('profile.edit', {
     url: '/information/:contactId/edit',
-    views : {
-      'profile-information-edit': {
+    views: {
+      'profile-edit' : {
         templateUrl: 'templates/editInformation.html'
       }
     }
   })
   
-    $stateProvider.state('profile.communications', {
+  $stateProvider.state('profile.communications', {
     url: '/communications/:contactId',
     cache: false,
     views : {
