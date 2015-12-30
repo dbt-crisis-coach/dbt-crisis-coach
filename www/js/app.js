@@ -54,7 +54,7 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
   })
   
   $stateProvider.state('profile.information', {
-    url: '/information/:contactId',
+    url: '/:contactId/information',
     views : {
       'profile-information': {
         templateUrl: 'templates/information.html'
@@ -62,10 +62,10 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     }
   })
 
-  $stateProvider.state('profile.edit', {
-    url: '/information/:contactId/edit',
+  $stateProvider.state('profile.information.edit', {
+    url: '/edit',
     views: {
-      'profile-edit' : {
+      'profile-information' : {
         templateUrl: 'templates/editInformation.html'
       }
     }
