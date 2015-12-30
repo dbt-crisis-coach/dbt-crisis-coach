@@ -62,14 +62,6 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     }
   })
 
-  $stateProvider.state('profile.information.edit', {
-    url: '/edit',
-    views: {
-      'profile-information' : {
-        templateUrl: 'templates/editInformation.html'
-      }
-    }
-  })
   
   $stateProvider.state('profile.communications', {
     url: '/communications/:contactId',

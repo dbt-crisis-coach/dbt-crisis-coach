@@ -11,8 +11,9 @@ angular.module('dbt')
 	self.edit = function() {
 		self.editing = true
 	};
-	self.finishEdit = function() {
-		self.editing = false
+	self.saveEdit = function() {
+		self.editing = false;
+		// Save to DB
 	};
 
 
