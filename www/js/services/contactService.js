@@ -5,7 +5,8 @@ angular.module('dbt-contact')
 	contact : Contact,
 	contacts : Contacts,
 	addContact : InsertContact,
-	importContact: ImportContact
+	importContact: ImportContact,
+	updateContact: UpdateContact
 
   }
   return service;
@@ -59,5 +60,9 @@ angular.module('dbt-contact')
 	});
 
 	return $q.all(insertNumberWorkers);
+  }
+  function UpdateContact(id, contact) { 
+  	var query = 'UPDATE Numbers SET number=' + contact.mobile + ' WHERE contactId=' + id + ';';
+  	$cordovaSQLite.execute(db, query);
   }
 });

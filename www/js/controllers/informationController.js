@@ -12,8 +12,8 @@ angular.module('dbt')
 		self.editing = true
 	};
 	self.saveEdit = function() {
+		ContactService.updateContact($stateParams.contactId, self.contact);
 		self.editing = false;
-		// Save to DB
 	};
 
 
