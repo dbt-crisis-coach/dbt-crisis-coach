@@ -62,7 +62,8 @@ angular.module('dbt-contact')
 	return $q.all(insertNumberWorkers);
   }
   function UpdateContact(id, contact) { 
-  	var query = 'UPDATE Numbers SET number=' + contact.mobile + ' WHERE contactId=' + id + ';';
+  	var query = 'UPDATE Numbers SET number=' + contact.mobile + ' WHERE contactId=' + id + ';' +
+  		'CREATE TABLE IF NOT EXISTS Triggers_'+ id + ' (patientTriggerId integer primary key, triggerId integer)';
   	$cordovaSQLite.execute(db, query);
   }
 });
