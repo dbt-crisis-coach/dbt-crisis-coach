@@ -6,7 +6,9 @@ angular.module('dbt-contact')
 	contacts : Contacts,
 	addContact : InsertContact,
 	importContact: ImportContact,
-	updateContact: UpdateContact
+	updateContact: UpdateContact,
+	getTriggers: GetTriggers,
+	newTrigger: NewTrigger
 
   }
   return service;
@@ -62,8 +64,27 @@ angular.module('dbt-contact')
 	return $q.all(insertNumberWorkers);
   }
   function UpdateContact(id, contact) { 
-  	var query = 'UPDATE Numbers SET number=' + contact.mobile + ' WHERE contactId=' + id + ';' +
-  		'CREATE TABLE IF NOT EXISTS Triggers_'+ id + ' (patientTriggerId integer primary key, triggerId integer)';
+  	var query = 'UPDATE Numbers SET number=' + contact.mobile + ' WHERE contactId=' + id + ';' 
+  		
+  		
   	$cordovaSQLite.execute(db, query);
+  }
+  function GetTriggers(contactId){
+  	var table = "Triggers_" + contactId;
+  	var triggers = [];
+  	var query = 'CREATE TABLE IF NOT EXISTS '+ table + ' (TriggerId integer primary key, description text);'+
+	 	'INSERT INTO ' + table + ' (description) VALUES ("I am a trigger");'
+ 	$cordovaSQLite.execute(db, query);
+ 	query = 'SELECT * FROM ' + table;
+  	return $cordovaSQLite.execute(db, query).then(function(result) {
+  		for (var i=0; i<result.rows.length; i++){
+  			triggers.push(result.rows.item(i).description)
+  		}
+  		return triggers
+	});
+  }
+  function NewTrigger(contactId, trigger){
+  	var query = 'INSERT INTO Triggers_' + contactId + ' (description) VALUES ("' + trigger + '");'
+  	$cordovaSQLite.execute(db, query)
   }
 });

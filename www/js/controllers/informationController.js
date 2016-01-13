@@ -2,8 +2,8 @@ angular.module('dbt')
 .controller('InformationCtr',function($stateParams, ContactService, $state, $ionicViewSwitcher) {	
 	var self = this;
 	self.editing = false;
-	self.newTrigger = false;
-	
+	self.addingTrigger = false;
+	self.newTrigger = "";
 	self.goBack  = 	function() {
 		$ionicViewSwitcher.nextDirection('back');
 		$state.go('home');
@@ -15,6 +15,11 @@ angular.module('dbt')
 		ContactService.updateContact($stateParams.contactId, self.contact);
 		self.editing = false;
 	};
+	self.addTrigger = function() {
+		self.contact.triggers = self.contact.triggers.concat(self.newTrigger)
+		self.addingTrigger=false;
+		ContactService.newTrigger($stateParams.contactId, self.newTrigger)
+	}
 
 
 	ContactService.contact($stateParams.contactId).then(function(contact) {
@@ -33,4 +38,8 @@ angular.module('dbt')
 		console.log(error.message);
 		alert('Cannot find that contact');
 	});
+	ContactService.getTriggers($stateParams.contactId).then(function(triggers){
+		alert(triggers[0])
+		self.contact.triggers = triggers;
+	})
 });
