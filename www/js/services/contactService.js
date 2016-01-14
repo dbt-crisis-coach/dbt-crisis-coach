@@ -64,10 +64,12 @@ angular.module('dbt-contact')
 	return $q.all(insertNumberWorkers);
   }
   function UpdateContact(id, contact) { 
-  	var query = 'UPDATE Numbers SET number=' + contact.mobile + ' WHERE contactId=' + id + ';' 
-  		
-  		
-  	$cordovaSQLite.execute(db, query);
+  	var query = 'UPDATE Numbers SET number=? WHERE contactId=?;' 
+  	// var query = 'UPDATE Numbers SET number=? WHERE contactId=?;' +
+  	// 	' UPDATE Contacts SET skillPref=?, address=?, extra=? WHERE contactId=?;'
+  	$cordovaSQLite.execute(db, query, [contact.mobile, id]
+  		// , contact.pref, contact.address, contact.extra, id]
+  	);
   }
   function GetTriggers(contactId){
   	var table = "Triggers_" + contactId;
@@ -84,7 +86,8 @@ angular.module('dbt-contact')
 	});
   }
   function NewTrigger(contactId, trigger){
-  	var query = 'INSERT INTO Triggers_' + contactId + ' (description) VALUES ("' + trigger + '");'
+  	var table = "Triggers_" + contactId; 
+  	var query = 'INSERT INTO ' + table + ' (description) VALUES ("' + trigger + '");'
   	$cordovaSQLite.execute(db, query)
   }
 });

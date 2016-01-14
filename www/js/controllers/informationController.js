@@ -26,11 +26,10 @@ angular.module('dbt')
 		self.title = contact.name;
 		// Mock Details
 		self.contact = {
-			mobile: contact.number,
-			address: "275 Cuba Street, Te Aro, Wellington",
-			pref: "Asking Michael about it",
-			triggers: ["Misunderstanding Angular/Ionic as a combo", "knowing it's nap time but I'm so..close..."],
-			extra: "It might be time for bed"
+			mobile: contact.number || "Not Specified",
+			address: contact.address || "Not Specified",
+			pref: contact.skillPref || "Not Specified", 
+			extra: contact.extra || "No Additional Information"
 		
 		}
 	})
@@ -38,6 +37,7 @@ angular.module('dbt')
 		console.log(error.message);
 		alert('Cannot find that contact');
 	});
+
 	ContactService.getTriggers($stateParams.contactId).then(function(triggers){
 		alert(triggers[0])
 		self.contact.triggers = triggers;

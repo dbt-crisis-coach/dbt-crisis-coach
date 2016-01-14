@@ -27,7 +27,7 @@ angular.module('dbt', ['ionic', 'ngCordova', 'dbt-contact'])
     db = $cordovaSQLite.openDB('dbt.db');    
     // $cordovaSQLite.execute(db, "DROP TABLE IF EXISTS Numbers;");	
     // $cordovaSQLite.execute(db, "DROP TABLE IF EXISTS Contacts;");
-    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Contacts (contactId integer primary key, name text, skill-pref integer, importId integer)");
+    $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Contacts (contactId integer primary key, name text, skillPref integer, address text, extra text, importId integer)");
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Triggers (triggerId integer primary key, title text, description text)");
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Skills (skillId integer primary key, title text, description text"); 
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Numbers (numberId integer primary key, contactId integer, type text, number text, pref bool, FOREIGN KEY(contactId) REFERENCES Contacts(contactId))");	
