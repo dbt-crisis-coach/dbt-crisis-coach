@@ -14,7 +14,9 @@
     "babel-loader": "6.2.3",
     "babel-plugin-transform-decorators-legacy": "1.3.4",
     "babel-preset-es2015": "6.5.0",
-    "strip-sourcemap-loader": "0.0.1"
+    "cucumber": "^0.9.5",
+    "strip-sourcemap-loader": "0.0.1",
+    "zombie": "^4.2.1"
   },
   "name": "dbt",
   "description": "dbt: An Ionic project"
