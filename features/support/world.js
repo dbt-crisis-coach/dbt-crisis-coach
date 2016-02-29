@@ -1,12 +1,5 @@
-var zombie = require('zombie');
-function World() {
-  this.browser = new zombie(); // this.browser will be available in step definitions
+var pc = require ('protractor-cucumber')
+var seleniumAddress = 'http://localhost:4444/wd/hub';
+var options = { browser : 'chrome', timeout : 10000 };
 
-  this.visit = function (url, callback) {
-    this.browser.visit(url, callback);
-  };
-}
-
-module.exports = function() {
-  this.World = World;
-};
+module.exports = pc.world(seleniumAddress, options);
