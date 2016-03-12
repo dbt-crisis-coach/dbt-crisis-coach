@@ -22,6 +22,7 @@
   "name": "dbt",
   "description": "dbt: An Ionic project",
   "scripts": {
+    "test:setup": "webdriver-manager start & ionic serve",
     "test": "protractor protractorConfig.js"
   },
   "cordovaPlugins": [
