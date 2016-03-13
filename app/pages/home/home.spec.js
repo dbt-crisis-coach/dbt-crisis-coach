@@ -1,4 +1,14 @@
-Feature: Contact List
+describe('Protractor Demo App', function() {
+  it('should have a title', function() {
+    // browser.get('/');
+    expect(browser.getTitle()).toEqual('Home')
+  });
+});
+
+
+
+
+/*Feature: Contact List
 
   Background:
     Given I visit ContactList screen
@@ -27,4 +37,4 @@ Feature: Contact List
   Scenario: Clicking a contact should go to correct contact
     When a Contact is pressed
     Then it should open the Contact screen
-        And the title should show the contact name
+        And the title should show the contact name*/
