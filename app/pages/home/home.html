@@ -3,14 +3,14 @@
     Home
   </ion-title>
 </ion-navbar>
-<ion-content class="home">
+<ion-content padding class="home">
   <ion-card *ngFor="#number of numbers">
     <ion-card-header>
-      Card Header
+      Contact
     </ion-card-header>
     <ion-card-content >
       {{ number }}
     </ion-card-content>
   </ion-card>
-  <button primary (click)= "findContact()">Find contact</button>
+  <button primary full (click)= "findContact()">Find contact</button>
 </ion-content>
