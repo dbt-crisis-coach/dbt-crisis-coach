@@ -10,5 +10,6 @@ DBT Crisis Coach is a mobile app to assist mental health professionals deliver s
  
  `npm install`
  
- 
+#Run
+
  `ionic run android`
