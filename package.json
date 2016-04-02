@@ -43,7 +43,10 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
     "cordova-plugin-contacts",
-    "cordova-plugin-sms"
+    {
+      "locator": "https://github.com/NotThatSmith/cordova-plugin-sms",
+      "id": "cordova-plugin-sms-loose-compare"
+    }
   ],
   "cordovaPlatforms": [
     "android",
