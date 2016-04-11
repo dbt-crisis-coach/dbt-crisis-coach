@@ -6,11 +6,9 @@ module.exports = function(config) {
     frameworks: ['browserify', 'jasmine'],
 
     files: [
-      'app/pages/providers/phoneNumberUtil.js',
-      'app/**/*.spec.js',
+      'app/**/*.spec.js'
     ],
     preprocessors: {
-      'app/pages/providers/phoneNumberUtil.js': ['browserify'],
       'app/**/*.spec.js': [ 'browserify' ]
     },
 
