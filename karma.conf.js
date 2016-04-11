@@ -20,6 +20,8 @@ module.exports = function(config) {
       transform: [['babelify', { "presets": ["es2015"] }]],
       extensions: ['.js']
     },
-    browsers: ['Chrome']
+    browsers: ['Chrome'],
+    
+    singleRun: false
   })
 }

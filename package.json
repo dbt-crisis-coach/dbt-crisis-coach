@@ -29,6 +29,7 @@
     "ionic-gulp-scripts-copy": "^1.0.0",
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.3",
+    "karma-chrome-launcher": "^0.2.3",
     "karma-jasmine": "^0.3.8"
   },
   "name": "dbt",
