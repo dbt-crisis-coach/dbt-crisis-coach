@@ -1,4 +1,4 @@
-import PhoneNumberUtil from './phoneNumberUtil.js'
+import * as PhoneNumberUtil from './phoneNumberUtil'
 
 describe("Comparing a phone number", () => {
   it("should be equal to number with '+'", () => {
@@ -6,9 +6,7 @@ describe("Comparing a phone number", () => {
     const number1 = '+272345678'
     const number2 = '0272345678'
 
-    //TODO remove having this line
-    var phoneNumberUtil = new PhoneNumberUtil()
-    const result = phoneNumberUtil.compare(number1, number2)
+    const result = PhoneNumberUtil.compare(number1, number2)
     expect(result).toBe(true);
   })
   
