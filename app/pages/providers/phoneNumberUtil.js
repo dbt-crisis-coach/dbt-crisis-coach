@@ -1,10 +1,10 @@
   
   export function compare(number1, number2) {
+    number1 = cleanNumber(number1)
+    number2 = cleanNumber(number2)
     
     let number1Array = [...number1]
     let number2Array = [...number2]
-    
-    //TODO remove any characters that are not + and numbers
     
     let maxLength = number1Array.length > number2Array.length ? number1Array.length: number2Array.length
     let matches = 0;
@@ -21,3 +21,6 @@
     return result >= 0.8
   }
   
+  function cleanNumber(number) {
+    return number.replace(/([-(), ])/g, '');
+  }
