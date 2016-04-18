@@ -14,7 +14,8 @@ export class TextMessagesPage {
    
   constructor(params, sms) {
     this.params = params.data
+    this.params.sms = []
     //Start loading
-    sms.list(this.params.number).then((data) => {console.log('text data', data)})
+    sms.list(this.params.number).then((data) => {this.params.sms = data})
   }
 }
