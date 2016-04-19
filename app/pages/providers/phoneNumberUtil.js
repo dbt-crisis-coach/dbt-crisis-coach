@@ -21,5 +21,5 @@ export function compare(number1, number2) {
 }
 
 function cleanNumber(number) {
-  return number.replace(/([-(), ])/g, '');
+  return number.replace(/([-(), +])/g, '');
 }

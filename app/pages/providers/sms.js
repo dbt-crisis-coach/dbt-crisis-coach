@@ -8,6 +8,7 @@ export class SMS {
   list(number) {
     return new Promise((resolve, reject) => {
       const filterSMS = {
+        maxCount : 200
       }
       
       if(window.SMS) {
