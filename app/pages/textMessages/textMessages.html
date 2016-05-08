@@ -6,7 +6,15 @@
 <ion-content padding class="textMessages">
   <ion-list>
     <ion-item *ngFor="#item of params.sms">
-      {{item.body}}
+      <ion-avatar *ngIf="item.type === 1" item-right>
+        <img src="http://ionicframework.com/dist/preview-app/www/img/avatar-cher.png" />
+      </ion-avatar>
+      <ion-avatar *ngIf="item.type === 2" item-left>
+        <img src="http://ionicframework.com/dist/preview-app/www/img/avatar-cher.png" />
+      </ion-avatar>
+      <h2 *ngIf="item.type === 1">{{ params.name }}</h2>      
+      <h2 *ngIf="item.type === 2">me</h2>
+      <p>{{item.body}}</p>
     </ion-item>
   </ion-list>
 </ion-content>

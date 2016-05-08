@@ -1,4 +1,4 @@
-import {Page, NavParams} from 'ionic-angular'
+import {Page, NavParams, Loading, NavController} from 'ionic-angular'
 import {SMS} from '../providers/sms'
 
 
@@ -9,13 +9,16 @@ import {SMS} from '../providers/sms'
 
 export class TextMessagesPage {
      static get parameters() {
-     return [[NavParams], [SMS]]
+     return [[NavParams], [SMS], [NavController]]
    }
    
-  constructor(params, sms) {
+  constructor(params, sms, nav) {
+    this.nav = nav
     this.params = params.data
     this.params.sms = []
     //Start loading
-    sms.list(this.params.number).then((data) => {this.params.sms = data})
+    sms.list(this.params.number).then((data) => {
+      this.params.sms = data
+    })
   }
 }
