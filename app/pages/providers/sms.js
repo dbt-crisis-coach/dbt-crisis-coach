@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core'
+import {Injectable} from '@angular/core'
 import * as PhoneNumberUtil from './phoneNumberUtil'
 import filter from 'lodash.filter'
 
