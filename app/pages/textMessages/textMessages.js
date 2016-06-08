@@ -1,8 +1,9 @@
-import {Page, NavParams, Loading, NavController} from 'ionic-angular'
+import {Component} from '@angular/core'
+import {NavParams, Loading, NavController} from 'ionic-angular'
 import {SMS} from '../providers/sms'
 
 
-@Page({
+@Component({
   templateUrl: 'build/pages/textMessages/textMessages.html',
   providers: [SMS]
 })
