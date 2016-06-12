@@ -1,7 +1,7 @@
 exports.config = {
   framework: 'jasmine',
   seleniumAddress: 'http://localhost:4723/wd/hub',
-  specs: ['app/**/*.spec.js'],
+  specs: ['app/**/*.e2eSpec.js'],
   // baseUrl: 'http://10.0.2.2:8000',
   useAllAngular2AppRoots: true,
   // allScriptsTimeout: 20000,

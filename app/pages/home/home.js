@@ -1,9 +1,10 @@
-import {Page, NavController} from 'ionic-angular'
+import {Component} from '@angular/core'
+import {NavController} from 'ionic-angular'
 import {Contacts} from 'ionic-native'
 
 import {TextMessagesPage} from '../textMessages/textmessages'
 
-@Page({
+@Component({
   templateUrl: 'build/pages/home/home.html'
 })
 
