@@ -1,5 +1,4 @@
 # DBT Crisis Coach
-[![Build Status](https://travis-ci.org/dbt-crisis-coach/dbt-crisis-coach.svg?branch=master)](https://travis-ci.org/dbt-crisis-coach/dbt-crisis-coach)
 
 DBT Crisis Coach is a mobile app to assist mental health professionals deliver safer, more effective and reportable phone coaching to clients anticipating or in distress.
 
