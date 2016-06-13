@@ -55,7 +55,8 @@ export class TextMessagesPage {
       subject: 'Testing email',
       body: csv
     }
-    //Email PLugin currently broken
+    //Email Plugin latest version currently broken - https://github.com/driftyco/ionic-native/issues/175
+    //using `ionic plugin add https://github.com/katzer/cordova-plugin-email-composer.git#0.8.2` to fix
     return EmailComposer.open(email)
   }
 }
