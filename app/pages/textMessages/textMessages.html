@@ -2,6 +2,11 @@
   <ion-title>
     {{ params.name }}
   </ion-title>
+  <ion-buttons end>
+    <button (click)="report()"> 
+      <ion-icon name="document"></ion-icon>
+    </button>
+  </ion-buttons>
 </ion-navbar>
 <ion-content class="textMessages">
   <ion-list>
