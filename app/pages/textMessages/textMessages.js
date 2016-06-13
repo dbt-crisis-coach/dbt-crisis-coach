@@ -2,6 +2,7 @@ import {Component} from '@angular/core'
 import {NavParams, Loading, NavController} from 'ionic-angular'
 import {SMS} from '../providers/sms'
 import json2csv from 'json2csv'
+import moment from 'moment'
 
 
 @Component({
@@ -25,16 +26,20 @@ export class TextMessagesPage {
   }
 
   report() {
-    let fields = ['date', 'type', 'body']
-    json2csv({ data: this.params.sms, fields: fields }, function(err, csv) {
+    let fields = ['date', 'type', 'message']
+    json2csv({ data: this.formatSMS(), fields: fields }, function(err, csv) {
       if (err) console.log(err);
        console.log(csv);
     });
   }
 
-  convertToCSV() {
-    //convert date to readable format
-    //Change type to sender or receiver
-    
+  formatSMS() {
+    return this.params.sms.map((sms) => {
+      return {
+         date: moment(sms.date).format('h:mm:ss a, dddd, MMMM Do YYYY'),
+         type: sms.type === 2 ? 'Sent' : 'Received',         
+         message: sms.body
+      }
+    })
   }
 }
