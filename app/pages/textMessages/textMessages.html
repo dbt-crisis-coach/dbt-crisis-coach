@@ -5,6 +5,7 @@
 </ion-navbar>
 <ion-content class="textMessages">
   <ion-list>
+    <button (click)="report()" ></button>
     <ion-item *ngFor="let item of params.sms" [ngClass]="{'text-right': item.type === 2}">
       <h2 *ngIf="item.type === 1">{{ params.name }}</h2>      
       <h2 *ngIf="item.type === 2">me</h2>
