@@ -2,10 +2,14 @@
   <ion-title>
     {{ params.name }}
   </ion-title>
+  <ion-buttons end>
+    <button (click)="report()"> 
+      <ion-icon name="document"></ion-icon>
+    </button>
+  </ion-buttons>
 </ion-navbar>
 <ion-content class="textMessages">
   <ion-list>
-     <button (click)="report()" >Report</button>
     <ion-item *ngFor="let item of params.sms" [ngClass]="{'text-right': item.type === 2}">
       <h2 *ngIf="item.type === 1">{{ params.name }}</h2>      
       <h2 *ngIf="item.type === 2">me</h2>
