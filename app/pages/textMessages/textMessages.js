@@ -50,13 +50,20 @@ export class TextMessagesPage {
 
   sendCSV(csv) {
     let email = {
-      to: 'smithysmith122@gmail.com',
-      attachments: [],
-      subject: 'Testing email',
-      body: csv
+      to: '',
+      attachments: 'base64:report.csv//' + b64EncodeUnicode(csv),
+      subject: 'Client Report',
+      body: 'Attached in this email you will find a list of SMS messages'
     }
     //Email Plugin latest version currently broken - https://github.com/driftyco/ionic-native/issues/175
     //using `ionic plugin add https://github.com/katzer/cordova-plugin-email-composer.git#0.8.2` to fix
     return EmailComposer.open(email)
+
+    //Unicode base64 encoding - https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding
+    function b64EncodeUnicode(str) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+            return String.fromCharCode('0x' + p1);
+        }));
+    }
   }
 }
