@@ -1,5 +1,6 @@
 import {Component} from '@angular/core'
 import {NavParams, Loading, NavController} from 'ionic-angular'
+import {EmailComposer} from 'ionic-native';
 import {SMS} from '../providers/sms'
 import json2csv from 'json2csv'
 import moment from 'moment'
@@ -26,11 +27,15 @@ export class TextMessagesPage {
   }
 
   report() {
-    let fields = ['date', 'type', 'message']
-    json2csv({ data: this.formatSMS(), fields: fields }, function(err, csv) {
-      if (err) console.log(err);
-       console.log(csv);
-    });
+    let convertToCSV = new Promise((resolve, reject) => {
+      let fields = ['date', 'type', 'message']
+      json2csv({ data: this.formatSMS(), fields: fields }, function(err, csv) {
+        if (err) reject(err)
+        resolve(csv)
+      });
+    })
+
+    return convertToCSV.then(this.sendCSV)
   }
 
   formatSMS() {
@@ -41,5 +46,16 @@ export class TextMessagesPage {
          message: sms.body
       }
     })
+  }
+
+  sendCSV(csv) {
+    let email = {
+      to: 'smithysmith122@gmail.com',
+      attachments: [],
+      subject: 'Testing email',
+      body: csv
+    }
+    //Email PLugin currently broken
+    return EmailComposer.open(email)
   }
 }
