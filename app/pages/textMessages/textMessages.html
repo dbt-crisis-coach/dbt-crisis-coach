@@ -1,13 +1,15 @@
-<ion-navbar *navbar>
-  <ion-title>
-    {{ params.name }}
-  </ion-title>
-  <ion-buttons end>
-    <button (click)="report()"> 
-      <ion-icon name="document"></ion-icon>
-    </button>
-  </ion-buttons>
-</ion-navbar>
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ params.name }}
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="report()"> 
+        <ion-icon name="document"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 <ion-content class="textMessages">
   <ion-list>
     <ion-item *ngFor="let item of params.sms" [ngClass]="{'text-right': item.type === 2}">
