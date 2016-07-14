@@ -7,21 +7,44 @@ import filter from 'lodash.filter'
 export class SMS {
   list(number) {
     return new Promise((resolve, reject) => {
-      const filterSMS = {
-        box: '',
-        maxCount : 200
-      }
       
       if(window.SMS) {
-        window.SMS.listSMS(filterSMS, (data) => {
-          let filteredSMS = filter(data,(textMessage) => {
-            return PhoneNumberUtil.compare(textMessage.address, number)
-          })
-          resolve(filteredSMS)
-        },
-        (error) => {
+        let permissions = cordova.plugins.permissions;
+        permissions.hasPermission(permissions.READ_SMS, (status) => {
+
+          let listSMS = () => {
+            const filterSMS = {
+                box: '',
+                maxCount : 200
+              }
+              window.SMS.listSMS(filterSMS, (data) => {
+                  let filteredSMS = filter(data,(textMessage) => {
+                    return PhoneNumberUtil.compare(textMessage.address, number)
+                  })
+                  resolve(filteredSMS)
+                },
+                (error) => {
+                  reject(error)
+                })
+          }            
+
+            if (!status.hasPermission) {
+              permissions.requestPermission(permissions.READ_SMS, function (requestStatus) {
+                if (requestStatus.hasPermission) {
+                  listSMS()
+                  }
+              }, (error)=> {
+                reject(error)
+              });
+            }
+            else {
+              listSMS()
+            }
+
+        }, (error) => {
           reject(error)
-        })
+        });
+
       }
       else {
         reject(() => {
