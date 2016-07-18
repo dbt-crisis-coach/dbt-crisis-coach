@@ -25,4 +25,12 @@ describe("Comparing a phone number", () => {
     const result = PhoneNumberUtil.compare(number1, number2)
     expect(result).toBe(true);
   })
+
+  it('should return false when one number is undefined', () => {
+    const number1 = undefined
+    const number2 = '0272345678'
+
+    const result = PhoneNumberUtil.compare(number1, number2)
+    expect(result).toBe(false)
+  })
 })

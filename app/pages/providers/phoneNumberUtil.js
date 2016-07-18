@@ -1,4 +1,7 @@
 export function compare(number1, number2) {
+  if(!number1 || !number2){
+    return false;
+  }
   number1 = cleanNumber(number1)
   number2 = cleanNumber(number2)
   
@@ -20,6 +23,6 @@ export function compare(number1, number2) {
   return result >= 0.8
 }
 
-function cleanNumber(number) {
-  return number.replace(/([-(), +])/g, '');
+function cleanNumber(numberToClean) {
+  return numberToClean.replace(/([-(), +])/g, '');
 }
