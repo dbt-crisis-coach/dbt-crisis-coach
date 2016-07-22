@@ -54,8 +54,7 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-contacts",
-    "cordova-plugin-sms"
+    "cordova-plugin-contacts"
   ],
   "cordovaPlatforms": [
     "android",
