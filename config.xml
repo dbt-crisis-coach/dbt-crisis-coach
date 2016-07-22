@@ -34,5 +34,5 @@
     <plugin name="ionic-plugin-keyboard" spec="~2.0.1" />
     <plugin name="cordova-plugin-android-permissions" spec="~0.8.0" />
     <plugin name="de.appplant.cordova.plugin.email-composer" spec="https://github.com/katzer/cordova-plugin-email-composer.git#0.8.2" />
-    <plugin name="cordova-plugin-contacts" spec="2.1.0">
+    <plugin name="cordova-plugin-contacts" spec="2.1.0" />
 </widget>
