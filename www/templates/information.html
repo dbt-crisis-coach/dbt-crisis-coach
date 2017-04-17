@@ -1,41 +1,84 @@
-<ion-view ng-controller="InformationCtr as info">
+<ion-view ng-controller="InformationCtr as informationCtrl">
+	<ion-nav-title >{{ informationCtrl.title }}</ion-nav-title>	
 	<ion-nav-buttons side="left">
-        <button class="button-clear" ng-click="info.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+    <button class="button-clear" ng-click="informationCtrl.goBack()">
+    	<i class="ion-arrow-left-c"></i> Back
+    </button>
+  </ion-nav-buttons>
+	<ion-nav-buttons side="right">
+        <button ng-if="!informationCtrl.editing" class="button button-icon icon ion-edit" ng-click="informationCtrl.edit()"></button>
+        <button ng-if="informationCtrl.editing" class="button button-icon icon ion-close" ng-click="informationCtrl.editing = false"></button>
+        <button ng-if="informationCtrl.editing" class="button button-icon icon ion-checkmark" ng-click="informationCtrl.saveEdit()"></button>
     </ion-nav-buttons>
-	<ion-nav-title>{{ info.title }}</ion-nav-title>
-	<ion-content padding="true">
+
+ 
+	<ion-content>
 		<h1>Profile</h1>
-		<div class="list">
-			<!-- Client Description Will go here -->
-			<p class="item"><strong>Preferred Skill:</strong>
-				{{ info.details.pref }} 
-			</p>				
-			<div class="item"><strong>Triggers:</strong> 
-				<ul class="bullet-list">
-			        <li ng-repeat="trigger in info.details.triggers">
-			        	<p>{{ trigger }}</p>
-			        </li>
-			    </ul>
-			
-			</div>
-			<p class="item"><strong>More:</strong>
-			 {{ info.details.extra }} 
+		<div class="item">
+			<p><strong>Edit Button Clicked</strong>{{informationCtrl.editing}}</p>
+		</div>
+		<div class="item">
+			<p>
+				<strong>Preferred Skill:</strong> 
+		 		<div ng-if="!informationCtrl.editing">{{ informationCtrl.contact.pref }}
+		 		</div>
+				<input ng-if="informationCtrl.editing" class="item-input-wrapper" ng-model="informationCtrl.contact.pref" ng-keyup="searchList($event)" type="text"> 
 			</p>
 		</div>
-		<div class="list card">
-		    <div class="item item-icon-right">
-		    	<h2>Mobile</h2>
-	  			<p>{{ info.number }}</p>
-		      <div class="icon">
-			      <i class="ion-ios-chatboxes" style="margin-right: 5px"></i>
-			       <i class="ion-ios-telephone"></i>
-			   </div>
-		    </div>
-		    <div class="item item-icon-right">
-		      <i class="icon ion-home"></i>
-		      Home Address
-		    </div>
-	  	</div>
+
+		<div class="item"><strong>Triggers:</strong> 
+			<ul class="bullet-list">
+        <li ng-if="!informationCtrl.editing" ng-repeat="trigger in informationCtrl.contact.triggers">
+        	<p>{{ trigger }}</p>
+        </li>
+        <div ng-if
+			    ="informationCtrl.editing">
+			    <li ng-repeat="trigger in informationCtrl.contact.triggers" class="item-icon-right item">
+	        	<p>{{ trigger }}</p>
+	        	<i class="icon  ion-minus-circled"></i>
+			    </li>
+  				<i on-tap="informationCtrl.newTrigger = true"class="icon button-icon ion-plus-circled">Add Trigger</i>
+		     	<div ng-if
+		  			="informationCtrl.newTrigger" class="bar item-input-inset"> 
+      			<i class="icon ion-search placeholder-icon"></i>
+      			<input class="item-input-wrapper" placeholder="" ng-keyup="searchList($event)" type="text"> 
+ 					</div>	
+ 				</div>
+	    </ul>
+		</div>
+		<div class="item">
+			<p><strong>More:</strong></p>
+			<p ng-if="!informationCtrl.editing">
+				{{ informationCtrl.contact.extra }}
+			</p>
+			<input ng-if="informationCtrl.editing" class="item-input-wrapper item-input" ng-model="informationCtrl.contact.extra" type="text">
+		</div>
+		<div ng-if="!informationCtrl.editing" class="list card">
+	    <div class="item item-icon-right">
+	    	<h2>Mobile</h2>
+  			<p>{{ informationCtrl.contact.mobile }}</p>
+	      <div class="icon">
+		      <i class="ion-ios-chatboxes" style="margin-right: 10px"></i>
+		      <i class="ion-ios-telephone"></i>
+		   </div>
+	    </div>
+	    <div class="item item-icon-right">
+	      <i class="icon ion-home"></i>
+	      <h2>Home Address</h2>
+	      <p> {{ informationCtrl.contact.address}}
+	    </div>
+	  </div>
+	  <div  ng-if="informationCtrl.editing" class="list card">
+	    <div class="item item-icon-right">
+	    	<h2>Mobile</h2>
+				<input ng-model="informationCtrl.contact.mobile" class="item-input-wrapper" type="tel">
+				
+	    </div>
+	    <div class="item">
+	      Home Address
+				<input ng-model="informationCtrl.contact.address" class="item-input-wrapper"ng-keyup="searchMaps($event)" type="text">
+	    </div>
+	  </div>
 	  	<ul class="list">
 		  <li class="item item-toggle">
 		     Automatically Import Texts

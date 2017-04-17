@@ -3,7 +3,6 @@ angular.module('dbt')
 	var self = this;
 	
 	self.texts = [];
-	self.edit = false;
 	
 	self.goBack  = goBack;
 	self.toggleSummary = toggleSummary;	

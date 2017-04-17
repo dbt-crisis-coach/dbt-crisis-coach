@@ -4,7 +4,7 @@
         <button class="button-clear" ng-click="communicationCtr.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
     </ion-nav-buttons>
 	<ion-nav-buttons side="right">
-        <button ng-if = "communicationCtr.edit == false" class="button button-icon icon ion-document-text" ng-click="communicationCtr.toggleSummary()"></button>
+        <button ng-if="!communicationCtr.edit" class="button button-icon icon ion-document-text" ng-click="communicationCtr.toggleSummary()"></buton>
         <button ng-if = "communicationCtr.edit" class="button button-icon icon ion-close" ng-click="communicationCtr.toggleSummary()"></button>
         <button ng-if = "communicationCtr.edit" class="button button-icon icon ion-checkmark" ng-click="communicationCtr.finishSummary()"></button>
     </ion-nav-buttons>

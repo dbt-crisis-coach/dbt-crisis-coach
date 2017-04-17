@@ -1,0 +1,64 @@
+<ion-view ng-controller="InformationCtr as informationCtrl">
+	<ion-nav-title>{{ informationCtrl.title }}</ion-nav-title>
+	<ion-nav-buttons side="left">
+        <button class="button-clear" ng-click="informationCtrl.goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    	 <button class="button button-icon icon ion-checkmark" ng-click="informationCtr.finishEdit()">
+	</ion-nav-buttons>
+	<ion-content padding="true">
+		<h1>Profile</h1>
+		<div class="list">
+			<p class="item"><strong>Preferred Skills:</strong>
+				{{ informationCtrl.details.pref }} 
+			</p>				
+			<div class="item"><strong>Triggers:</strong> 
+				<ul class="bullet-list">
+			        <li ng-repeat="trigger in informationCtrl.details.triggers" class="item-icon-right">
+			        	<p>{{ trigger }}</p>
+			        	<i class="ion-minus-circled"></i>
+			        </li>
+			    </ul>
+				<i class="ion-plus-circled"></i>
+				<button class="button icon-left ion-add">Add New Trigger</button>
+			</div>
+			<p class="item"><strong>More:</strong>
+			 {{ informationCtrl.details.extra }} 
+			</p>
+		</div>
+		<div class="list card">
+		    <div class="item item-icon-right">
+		    	<h2>Mobile</h2>
+	  			<p>{{ informationCtrl.number }}</p>
+		      <div class="icon">
+			      <i class="ion-ios-chatboxes" style="margin-right: 10px"></i>
+			       <i class="ion-ios-telephone"></i>
+			   </div>
+		    </div>
+		    <div class="item item-icon-right">
+		      <i class="icon ion-home"></i>
+		      Home Address
+		    </div>
+	  	</div>
+	  	<ul class="list">
+		  <li class="item item-toggle">
+		     Automatically Import Texts
+		     <label class="toggle toggle-balanced">
+		       <input type="checkbox">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+		  <li class="item item-toggle">
+		     Automatically Import Calls
+		     <label class="toggle toggle-balanced">
+		       <input type="checkbox">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		  </li>
+		</ul>
+	</ion-content>
+</ion-view>
